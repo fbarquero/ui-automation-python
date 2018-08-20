@@ -1,10 +1,11 @@
-import unittest
+#!/usr/bin/python
+from unittest import TestCase
 from selenium.webdriver.common.keys import Keys
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 
-class PythonOrgSearch(unittest.TestCase):
+class TestPythonOrgSearch(TestCase):
 
     def setUp(self):
         self.driver = webdriver.Remote(
@@ -18,6 +19,7 @@ class PythonOrgSearch(unittest.TestCase):
         elem = driver.find_element_by_name("q")
         elem.send_keys("pycon")
         elem.send_keys(Keys.RETURN)
+        driver.get_screenshot_as_file("screenshot.png")
         assert "No results found." not in driver.page_source
 
     def tearDown(self):
