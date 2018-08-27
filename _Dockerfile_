@@ -1,9 +1,11 @@
 FROM python:2-alpine
 
-RUN mkdir /tmp/results
+MAINTAINER abarquero@mail.com
+
 COPY requirements.txt /tmp/requirements.txt
 RUN pip install -r /tmp/requirements.txt
+
 COPY . /usr/src/app/project-automation/
-RUN chmod -R 664 /usr/src/app/project-automation/
+
 WORKDIR /usr/src/app/project-automation/
-CMD ["nosetests", "-v", "--with-xunit", "--xunit-file=/tmp/results/results.xml"]
+CMD ["nosetests", "-v", "-a", "all", "--with-xunit", "--xunit-file=/tmp/results/project_auto_results.xml"]
