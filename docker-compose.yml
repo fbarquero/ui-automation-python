@@ -7,3 +7,6 @@ services:
       - ./results:/tmp/results
     # If adding a fixed container name then won't be able to scale
     container_name: ui-auto
+    environment:
+      - GRID_HOST=$GRID_HOST
+      - BROWSER=$BROWSER
