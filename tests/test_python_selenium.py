@@ -11,7 +11,7 @@ class TestPythonOrgSearch(TestCase):
 
     def setUp(self):
         self.driver = webdriver.Remote(
-            command_executor='http://127.0.0.1:4444/wd/hub',
+            command_executor='http://localhost:4444/wd/hub',
             desired_capabilities=DesiredCapabilities.CHROME)
 
     def test_search_in_python_org_1(self):
