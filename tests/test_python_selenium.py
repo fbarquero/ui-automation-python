@@ -1,4 +1,5 @@
 #!/usr/bin/python
+import os
 from unittest import TestCase
 from selenium.webdriver.common.keys import Keys
 from selenium import webdriver
@@ -10,9 +11,16 @@ from nose.plugins.attrib import attr
 class TestPythonOrgSearch(TestCase):
 
     def setUp(self):
+        browser = os.environ.get('BROWSER', 'chrome')
+
+        if browser == "chrome":
+            caps = DesiredCapabilities.CHROME
+        if browser == "firefox":
+            caps = DesiredCapabilities.CHROME
         self.driver = webdriver.Remote(
-            command_executor='http://localhost:4444/wd/hub',
-            desired_capabilities=DesiredCapabilities.CHROME)
+            command_executor='http://{grid_host}:4444/wd/hub'.format(grid_host=os.environ.get('GRID_HOST', 'localhost')),
+            desired_capabilities=caps)
+
 
     def test_search_in_python_org_1(self):
         driver = self.driver
