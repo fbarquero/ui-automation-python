@@ -1,6 +1,0 @@
-venv
-Dockerfile
-test_result.xml
-.gitignore
-.dockerignore
-*.pyc

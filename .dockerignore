@@ -1,0 +1,7 @@
+venv
+test_code.py
+*.pyc
+.vscode
+Dockerfile
+results
+*.png
